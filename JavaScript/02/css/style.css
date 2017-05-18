@@ -1,0 +1,78 @@
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html, body {
+	width: 100%;
+	height: 100%;
+	font-family: "Lora", "Times New Roman", serif;
+    font-style: normal;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 30px;
+    background-color: #f2f2f2;
+	min-width: 350px;
+}
+
+h2 {
+	text-align: center;
+	font-weight: 800;
+	font-size: 26px;
+}
+
+.clearfix {
+	clear: both;
+}
+
+.central {
+	margin: 0px auto;
+}
+
+.feedback {
+	width: 400px;
+	margin-top: 50px;
+    border: solid 2px lightsteelblue;
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+
+}
+
+.feedback label {
+	min-width: 65px;
+	float: left;
+}
+
+.feedback input, .feedback select {
+	min-width: 280px;
+}
+
+#input_credit_card, #input_birth {
+	min-width: 210px;
+}
+
+#input_bio {
+	min-width: 400px;
+	min-height: 200px;
+}
+
+.submit_button {
+	min-width: 100px;
+	min-height: 30px;
+	border-radius: 10px;
+    background-color: lightblue;
+    border-color: lightseagreen;
+}
+
+.submit_button:hover {
+	background: lightseagreen;
+    transition-duration: 0.5s;
+}
+
+.submit_button:active {
+	background: lightcyan;
+	border-color: lightgreen;
+    transition-duration: 0.5s;
+}

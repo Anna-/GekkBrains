@@ -1,0 +1,27 @@
+﻿1). Необходимо скачать, прилагаемый файл validator.php. Самостоятельно разобраться в формате данных который он отдает. 
+С помощью ajax запросов к этому файлу необходимо реализовать валидатор формы. 
+
+array(
+'username' => 'Somebody',
+'password' => 'mypassword',
+'email' => 'some@some.ru',
+'gender' => 'm',
+'credit_card' => '9872389-2424-234224-234', 
+'bio' => 'This is good! I think I will switch to another language'
+)
+
+Ограничения:
+1. Все поля обязательные
+2. Пол - 1 символ (M, Ж)
+3. Email и credit card должны быть указаны в соответствующем формате.
+4. Логин и пароль, мин длинна 6 символов, макс - 100
+
+https://www.dropbox.com/s/gtegivhi32lp9bx/validator.php?dl=0
+https://github.com/Wixel/GUMP/archive/1.3.zip
+В архиве есть файл gump.class.php, его необходимо положить рядом с validator.php.
+
+ПО для организации сервера:
+1. http://www.denwer.ru/
+2. https://ospanel.io/
+3. https://www.apachefriends.org/ru/index.html
+Можно использовать любой
