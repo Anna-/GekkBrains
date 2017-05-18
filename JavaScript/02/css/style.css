@@ -58,21 +58,35 @@ h2 {
 	min-height: 200px;
 }
 
-.submit_button {
+#submit_button {
 	min-width: 100px;
 	min-height: 30px;
 	border-radius: 10px;
     background-color: lightblue;
     border-color: lightseagreen;
+    margin-top: 20px;
 }
 
-.submit_button:hover {
+#submit_button:hover {
 	background: lightseagreen;
     transition-duration: 0.5s;
 }
 
-.submit_button:active {
+#submit_button:active {
 	background: lightcyan;
 	border-color: lightgreen;
     transition-duration: 0.5s;
+}
+
+.error_text {
+	color: red;
+	font-size: 12px;
+	line-height: 12px;
+	font-style: italic;
+}
+
+.error {
+	border-color: red;
+	border-width: 1px;
+	background-color: pink;
 }

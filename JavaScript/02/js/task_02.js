@@ -3,9 +3,28 @@
 
 */
 
+var FIELDS = [
+	"Username",
+	"Password",
+	"Email",
+	"Gender",
+	"Credit Card",
+	"Bio",
+	"Birth"
+	];
+
+function toFormField (fieldName) {
+	return fieldName.toLowerCase().replace(" ", "_");
+}
+
+function submit() {
+	window.location.href = "contacts.php";
+}
+
 function validate () {
 	var xhr = new XMLHttpRequest();
-	xhr.open('POST', 'validator.php', true);
+	xhr.open("POST", "validator.php", true);
+	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
 
 	xhr.timeout = 15000;
 	xhr.ontimeout = function () {
@@ -25,21 +44,16 @@ function validate () {
 }
 
 function getFormData() {
-	var	name = "username=" + document.getElementById("input_name").value;
-	var	password = "password=" + document.getElementById('input_password').value;
-	var	email = "email=" + document.getElementById('input_email').value;
-	var	gender = "gender=" + document.getElementById('input_gender').value;
-	var	credit_card = "credit_card=" + document.getElementById('input_credit_card').value;
-	var bio = "bio=" + document.getElementById('input_bio').value;
-	var birth = "birth=" + document.getElementById('input_birth').value;
-	
-	return 	name + '&' + 
-			password + '&' + 
-			email +'&' + 
-			gender + '&' + 
-			credit_card + '&' + 
-			bio + '&' + 
-			birth;
+	var res = "";
+
+	for (var i in FIELDS) {
+		var field = toFormField(FIELDS[i]);
+		if (res != "") {
+			res += "&";
+		}
+		res += (field + "=" + document.getElementById("input_" + field).value);
+	}
+	return res;
 }
 
 function parseResponse(text) {
@@ -48,11 +62,35 @@ function parseResponse(text) {
 	var result = response['result'];
 	if (result) {
 		console.log("Форму можно отправлять");
+		submit();
 	} else {
 		console.log("Некоторые поля заполнены некорректно");
 		document.getElementById('message').innerText = "Некоторые поля заполнены некорректно";
+		displayErrors(response['error']);
 	}
-
-	var errors = response['error'];
-	console.log(errors);
 }
+
+function displayErrors(errors) {
+	console.log(errors);
+	for (var i in FIELDS) {
+		var field = FIELDS[i];
+		var formField = toFormField(field);
+
+		if (errors[field]) {
+			showError(formField, errors[field]);
+		} else {
+			removeError(formField);
+		}
+	}
+}
+
+function showError(fieldName, textError) {
+	document.getElementById(fieldName + "_message").innerText = textError;
+	document.getElementById("input_" + fieldName).classname += "error";
+}
+
+function removeError(fieldName) {
+	document.getElementById(fieldName + "_message").innerText = "";
+	document.getElementById("input_" + fieldName).classList.remove('error');
+}
+
