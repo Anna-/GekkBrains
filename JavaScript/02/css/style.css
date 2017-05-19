@@ -49,11 +49,11 @@ h2 {
 	min-width: 280px;
 }
 
-#input_credit_card, #input_birth {
+#credit_card, #birth {
 	min-width: 210px;
 }
 
-#input_bio {
+#bio {
 	min-width: 400px;
 	min-height: 200px;
 }
