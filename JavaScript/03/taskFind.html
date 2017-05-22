@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="js/task_03_find.js" defer></script>
+</head>
+<body>
+    <header>
+    </header>
+    <div class="myForm central">
+        <h2>Напишите нам</h2>
+        <form action="" method="post" name="my_form" id="my_form">
+            <label for="text">Введите текст:</label>
+            <textarea name="text" id="text"></textarea>
+
+            <label for="found">Найденные значения:</label>
+            <textarea type="text" id="found" name="found" disabled="disabled" placeholder="(не найдено)"> </textarea>
+            <div id="found_message" class="error_text"></div>
+
+            <input id="submit" type="submit" value="Найти" name="submit"  />
+            <div class="clearfix"></div>
+        </form>
+    </div>
+    <footer>
+    </footer>
+</body>
+</html>
