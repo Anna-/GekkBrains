@@ -75,3 +75,24 @@ h2 {
 	line-height: 12px;
 	font-style: italic;
 }
+
+#feedback_form label {
+	min-width: 65px;
+	float: left;
+}
+
+#feedback_form input {
+	min-width: 280px;
+}
+
+.error {
+	border-color: red;
+	border-width: 1px;
+	background-color: pink;
+}
+
+.correct {
+	border-color: green;
+	border-width: 1px;
+	background-color: lightgreen;
+}
