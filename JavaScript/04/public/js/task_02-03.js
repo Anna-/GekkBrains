@@ -18,75 +18,80 @@ function FeedbackForm (formId) {
 		self.citiesGroupId = citiesGroupId;
 		self.citiesSelectId = citiesSelectId;
 		self.citiesInputId = citiesInputId;
-		document.getElementById(submitButtonId).onclick = function (event) {
-			self.submit();
-			event.preventDefault();
-		};
+		$('#' + submitButtonId).on('click', 
+			function (event) {
+				self.submit();
+				event.preventDefault();
+			});
 		initCitiesInput();
 	}
 
 	this.submit = function () {
-		console.log("submit");
-		document.getElementById("message").innerText = "Форма отправлена";
+		$('#message').text('Форма отправлена');
 	}
 
-	this.getCities = function () {
-		var xhr = new XMLHttpRequest();
-		xhr.open("POST", "cities.php", true);
-		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
-
-		xhr.timeout = 15000;
-		xhr.ontimeout = function () {
-			console.log("Время ожидания ответа превышено");
-		}
-
-		xhr.onreadystatechange = function () {
-			console.log(xhr.readyState, xhr.status);
-			if (xhr.readyState == 4 && xhr.status == 200) {
-				createCitiesList(JSON.parse(xhr.responseText));
+	this.getCities = function (nameStarter = '') {
+		var curMode = nameStarter ? 'part' : 'all';
+		$.ajax({
+			url: 'cities.php',
+			dataType: 'json',
+			type: 'POST',
+			data: {
+			    mode: curMode,
+			    limit: self.citiesLimit,
+			    nameStarter: nameStarter
+			},
+			success: function(result) {
+			    createCitiesList(result);
 			}
-		}
-
-		var formData = 'mode=all&limit=' + self.citiesLimit + '&nameStarter=Сан';
-		xhr.send(formData);
+		});
 	}
 
 	function initCitiesInput () {
-		self.getCities();
-		document.getElementById(self.citiesGroupId).addEventListener('click', showCitiesList);
-		document.getElementById(self.citiesSelectId).addEventListener('blur', hideCitiesList); 
+		$('#' + self.citiesGroupId).on('click', showCitiesList);
+		$('#' + self.citiesInputId).on('focus keyup', prepareShortCitiesList);
+		$('#' + self.citiesSelectId).on('blur', hideCitiesList);
+	}
+
+	function prepareShortCitiesList() {
+		console.log('prepareShortCitiesList');
+		var curValue = $('#' + self.citiesInputId).val();
+		if (curValue == '') {
+			self.getCities();
+		} else if (curValue.length >= 3) {
+			showCitiesList();
+			self.getCities(curValue);
+		} else {
+			hideCitiesList();
+		}
 	}
 
 	function showCitiesList() {
-		document.getElementById(self.citiesSelectId).hidden = false;
+		console.log('showCitiesList');
+		$('#' + self.citiesSelectId).show();
 
-		var hoverElement = document.getElementById(self.citiesSelectId).querySelector(':hover');
-		if (hoverElement) {
-			document.getElementById(self.citiesInputId).value = hoverElement.innerText;
+		var selectedElement = $('#' + self.citiesSelectId + ' option:selected');
+		console.log(selectedElement);
+		if (selectedElement.text() != '') {
+			$('#' + self.citiesInputId).val(selectedElement.text());
 		}
 	}
 
 	function hideCitiesList() {
+		console.log('hideCitiesList');
 		setTimeout(function() { 
-				document.getElementById(self.citiesSelectId).hidden = true; 
+				$('#' + self.citiesSelectId).hide();
 			}, 100);
 	}
 
 	function createCitiesList(cities) {
-		var select = document.getElementById(self.citiesSelectId);
-		removeChilds(select);
+		var select = $('#' + self.citiesSelectId);
+		select.children().remove();
 
 		for (var i in cities) {
-			var cityOption = document.createElement('option');
-			cityOption.innerText = cities[i];
-			select.appendChild(cityOption);
-		}
-	}
-
-	function removeChilds(parent) {
-		var children = parent.childNodes; 
-		for (var i = 0; i < children.length; ++i) { 
-			parent.removeChild(children[i]); 
+			$('<option/>', {
+				text: cities[i]
+				}).appendTo(select);
 		}
 	}
 }

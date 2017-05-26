@@ -16,7 +16,7 @@ die(json_encode($result));
 
 function getCitiesName($mode, $nameStarter, $limit) {
 	if ($mode == 'part') {
-		$cities = app\models\City::getCitiesByStarter("Сан", 5);
+		$cities = app\models\City::getCitiesByStarter($nameStarter, $limit);
 	} else {
 		$cities = app\models\City::getAll();
 	}

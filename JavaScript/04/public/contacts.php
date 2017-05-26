@@ -12,7 +12,6 @@
 	</header>
 	<div class="feedback central">
 		<h2>Напишите нам</h2>
-        <div id="message" class="error_text"></div>
         <form action="" method="post" name="feedback_form" id="feedback_form">
         	<label for="username">Имя:</label>
             <input type="text" id="username" name="username" placeholder="Имя" />
@@ -38,6 +37,7 @@
 
             <div class="clearfix"></div>
             <input id="submit" type="submit" value="Отправить" name="submit" />
+            <div id="message" class="message_text"></div>
         </form>
     </div>
 	<footer>

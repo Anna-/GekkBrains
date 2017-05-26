@@ -48,6 +48,11 @@ h2 {
 	min-width: 300px;
 }
 
+#message {
+    position: relative;
+    left: -35%;
+}
+
 #submit {
 	min-width: 100px;
 	min-height: 30px;
@@ -70,15 +75,11 @@ h2 {
     transition-duration: 0.5s;
 }
 
-.error_text {
-	color: red;
+.message_text {
+	color: green;
 	font-size: 12px;
 	line-height: 12px;
 	font-style: italic;
+	margin-top: 10px;
 }
 
-.error {
-	border-color: red;
-	border-width: 1px;
-	background-color: pink;
-}
