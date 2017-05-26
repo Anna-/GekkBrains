@@ -1,0 +1,40 @@
+Конкурсная задача:
+Необходимо написать функцию, проверяющую входную строку на палиндром 
+(слово или фраза, которая читается слева направо и справа налево одинаково). 
+Функция должна возвращать true или false. 
+Функция должна проходить следующие тесты:
+console.log(isPalindrome("level")); // logs 'true'
+console.log(isPalindrome("levels")); // logs 'false'
+console.log(isPalindrome("A car, a man, a maraca")); // logs 'true'
+
+"A car, a man, a maraca".toLowerCase().split('')
+.filter(function(c){return /\w/g.test(c);})
+.map(function(item, i, arr) {return item + arr[arr.length - 1 - i];})
+.every(function(c){return c[0]==c[1]});
+
+"A car, a man, a maraca".toLowerCase()
+.replace(/\W/g, '').split('')
+.map(function(item, i, arr) {return item + arr[arr.length - 1 - i];})
+.every(function(c){return c[0]==c[1]});
+
+"A car, a man, a maraca".toLowerCase()
+.replace(/\W/g, '').split('')
+.every(function(item, i, arr) {return item == arr[arr.length - 1 - i];})
+
+//-----------------first(169)--------
+str.toLowerCase().split('')
+.filter(function(c){return /\w/g.test(c);})
+.map(function(c,i,arr){return c+arr[arr.length-1-i];})
+.every(function(c){return c[0]==c[1]});
+
+//-----------------second(146)---------
+str.toLowerCase()
+.replace(/\W/g, '').split('')
+.map(function(c,i,arr) {return c+arr[arr.length-1-i];})
+.every(function(c){return c[0]==c[1]});
+
+//--------------third(102)------
+str.toLowerCase()
+.replace(/\W/g, '').split('')
+.every(function(c,i,s){return c==s[s.length-1-i];});
+
