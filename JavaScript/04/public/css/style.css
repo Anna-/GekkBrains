@@ -83,3 +83,57 @@ h2 {
 	margin-top: 10px;
 }
 
+.tabs {
+	max-width: 600px;
+	margin: 50px;
+}
+
+.tabs_menu ul {
+	margin: 0px;
+    list-style: none;
+}
+
+.tabs_menu li {
+	display: inline-block;
+    width: 170px;
+    height: 30px;
+    border: 2px solid darkgreen;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+	background: #c8ead7;
+}
+
+.tabs_menu li.active {
+	border-bottom: none;
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+	background: inherit;
+}
+
+.tabs_content {
+	max-width: 590px;
+    border: 2px solid darkgreen;
+    border-radius: 5px;
+    border-top: none;
+    height: 100px;
+	display: none;
+	text-align: center;
+	padding-top: 30px;
+}
+
+.tabs_content.active {
+	display: block;
+}
+
+.blue {
+	color: blue;
+}
+
+.red {
+	color: red;
+}
+
+.green {
+	color: green;
+}
