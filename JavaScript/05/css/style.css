@@ -36,9 +36,10 @@ h2 {
 .clock {
 	font-weight: 800;
 	font-size: 36px;
-	margin: 50px auto;
+	margin: 50px 100px;
 	width: 260px;
 	height: 50px;
+	float: left;
 }
 
 .clock {
@@ -49,6 +50,15 @@ h2 {
 .clock .face {
 	width: 260px;
 	height: 90px;
+}
+
+.analog.clock {
+	height: 440px;
+}
+
+.analog.clock .face {
+	width: 300px;
+	height: 300px;
 }
 
 .clock .buttons {
