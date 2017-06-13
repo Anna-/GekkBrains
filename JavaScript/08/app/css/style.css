@@ -1,0 +1,102 @@
+* {
+  margin: 0;
+  padding: 0; }
+
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: "Lora", "Times New Roman", serif;
+  font-style: normal;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 30px;
+  background-color: #f2f2f2;
+  min-width: 350px; }
+
+.container {
+  margin: 0px auto;
+  width: 80%;
+  height: 100%; }
+
+h2 {
+  text-align: center;
+  font-weight: 800;
+  font-size: 26px; }
+
+.clearfix {
+  clear: both; }
+
+/*---CLOCK---*/
+.clock {
+  font-weight: 800;
+  font-size: 36px;
+  margin: 50px 100px;
+  width: 260px;
+  height: 50px;
+  float: left; }
+
+.clock {
+  width: 260px;
+  height: 220px; }
+
+.clock .face {
+  width: 260px;
+  height: 90px; }
+
+.analog.clock {
+  height: 440px; }
+
+.analog.clock .face {
+  width: 300px;
+  height: 300px; }
+
+.clock .buttons {
+  width: 260px;
+  height: 120px; }
+
+.clock .face div {
+  width: 60px;
+  height: 40px;
+  padding: 20px 5px;
+  border: 1px gray solid;
+  float: left; }
+
+.clock .face > p {
+  width: 5px;
+  margin: 0px;
+  float: left;
+  padding: 20px 5px; }
+
+.clock {
+  text-align: center; }
+
+.clock .buttons {
+  margin: 0px auto;
+  width: 260px; }
+
+.clock .buttons button {
+  width: 70px;
+  height: 50px;
+  margin-top: 10px;
+  margin-right: 10px; }
+
+/*---VOTER---*/
+.voter {
+  margin: 50px auto;
+  height: 30px;
+  width: 300px;
+  border: 2px lightseagreen solid;
+  text-align: center;
+  padding: 10px; }
+
+.voter span {
+  font-weight: 800;
+  font-size: 36px;
+  margin: 0px 10px;
+  padding: 5px;
+  cursor: pointer; }
+
+.voter span.vote {
+  border: 1px lightseagreen solid;
+  border-radius: 10px;
+  cursor: default; }
